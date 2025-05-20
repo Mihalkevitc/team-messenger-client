@@ -16,7 +16,7 @@ export default function RegisterPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('https://team-messenger.onrender.com/api/auth/register', formData);
+      const res = await axios.post('https://team-messenger-server.onrender.com/api/auth/register', formData);
       console.log('Успешная регистрация:', res.data);
       localStorage.setItem('token', res.data.token);
       navigate('/');

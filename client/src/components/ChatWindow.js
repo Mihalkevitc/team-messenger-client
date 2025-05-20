@@ -35,7 +35,7 @@ const ChatWindow = ({ chat, user, onMessageSent }) => {
       try {
         // Загружает историю сообщений с бэкенда через HTTP-запрос.
         console.log('Загрузка истории сообщений для чата:', chat.id);
-        const response = await axios.get(`https://team-messenger.onrender.com/api/chats/${chat.id}/messages`, {
+        const response = await axios.get(`https://team-messenger-server.onrender.com/api/chats/${chat.id}/messages`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -56,7 +56,7 @@ const ChatWindow = ({ chat, user, onMessageSent }) => {
     if (!chat) return; // Если чат не выбран, то ничего не делаем.
 
     // Создаём новое подключение к WebSocket/ Передаётся token из localStorage для авторизации.
-    const newSocket = io('https://team-messenger.onrender.com', {
+    const newSocket = io('https://team-messenger-server.onrender.com', {
       auth: {
         token: localStorage.getItem('token')
       }

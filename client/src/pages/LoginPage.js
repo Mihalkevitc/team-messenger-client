@@ -17,7 +17,7 @@ export default function LoginPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('https://team-messenger.onrender.com/api/auth/login', formData);
+      const res = await axios.post('https://team-messenger-server.onrender.com/api/auth/login', formData);
       localStorage.setItem('token', res.data.token);
       // Принудительно обновляем страницу для всех компонентов
       window.location.href = '/home';

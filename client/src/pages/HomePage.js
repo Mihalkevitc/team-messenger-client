@@ -17,7 +17,7 @@ const [socket, setSocket] = useState(null);
 
 // Подключение к WebSocket
 useEffect(() => {
-  const newSocket = io('https://team-messenger.onrender.com', {
+  const newSocket = io('https://team-messenger-server.onrender.com', {
     auth: {
       token: localStorage.getItem('token')
     }
@@ -42,7 +42,7 @@ useEffect(() => {
   useEffect(() => {
   const fetchUser = async () => {
     try {
-      const res = await axios.get('https://team-messenger.onrender.com/api/users/me', {
+      const res = await axios.get('https://team-messenger-server.onrender.com/api/users/me', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
@@ -146,7 +146,7 @@ useEffect(() => {
 
         console.log('Запрос к серверу...');
 
-        const response = await axios.get(`https://team-messenger.onrender.com${endpoint}`, {
+        const response = await axios.get(`https://team-messenger-server.onrender.com${endpoint}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -179,7 +179,7 @@ useEffect(() => {
 
     const getChats = async () => {
       try {
-        const response = await axios.get('https://team-messenger.onrender.com/api/chats', {
+        const response = await axios.get('https://team-messenger-server.onrender.com/api/chats', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -232,7 +232,7 @@ useEffect(() => {
           };
       
       let response = await axios.post(
-        `https://team-messenger.onrender.com${endpoint}`,
+        `https://team-messenger-server.onrender.com${endpoint}`,
         payload,
         { 
           headers: { 
@@ -288,7 +288,7 @@ useEffect(() => {
   const searchUsers = async (email) => {
     try {
       setIsSearching(true);
-      const response = await axios.get(`https://team-messenger.onrender.com/api/users/search?email=${email}`, {
+      const response = await axios.get(`https://team-messenger-server.onrender.com/api/users/search?email=${email}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
@@ -347,7 +347,7 @@ useEffect(() => {
       }
 
       await axios.post(
-        `https://team-messenger.onrender.com/api/teams/${activeItem.id}/members`,
+        `https://team-messenger-server.onrender.com/api/teams/${activeItem.id}/members`,
         { email: newMemberEmail, role: newMemberRole },
         {
           headers: {
@@ -383,7 +383,7 @@ useEffect(() => {
       }
 
       await axios.delete(
-        `https://team-messenger.onrender.com/api/teams/${activeItem.id}/members/${userId}`,
+        `https://team-messenger-server.onrender.com/api/teams/${activeItem.id}/members/${userId}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -419,7 +419,7 @@ useEffect(() => {
       const updatedDescription = teamSettingsData.description
 
       const response = await axios.put(
-        `https://team-messenger.onrender.com/api/teams/${activeItem.id}`,
+        `https://team-messenger-server.onrender.com/api/teams/${activeItem.id}`,
         teamSettingsData,
         {
           headers: {
@@ -459,7 +459,7 @@ useEffect(() => {
       }
 
       await axios.delete(
-        `https://team-messenger.onrender.com/api/teams/${activeItem.id}`,
+        `https://team-messenger-server.onrender.com/api/teams/${activeItem.id}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -469,7 +469,7 @@ useEffect(() => {
 
       // Обновляем список команд
       const response = await axios.get(
-        'https://team-messenger.onrender.com/api/teams',
+        'https://team-messenger-server.onrender.com/api/teams',
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -523,7 +523,7 @@ useEffect(() => {
   const searchParticipant = async (email) => {
     try {
       setIsParticipantSearching(true);
-      const response = await axios.get(`https://team-messenger.onrender.com/api/users/search?email=${email}`, {
+      const response = await axios.get(`https://team-messenger-server.onrender.com/api/users/search?email=${email}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
@@ -567,7 +567,7 @@ useEffect(() => {
       }
 
       await axios.delete(
-        `https://team-messenger.onrender.com/api/chats/${activeItem.id}`,
+        `https://team-messenger-server.onrender.com/api/chats/${activeItem.id}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -577,7 +577,7 @@ useEffect(() => {
 
       // Обновляем список чатов
       const response = await axios.get(
-        'https://team-messenger.onrender.com/api/chats',
+        'https://team-messenger-server.onrender.com/api/chats',
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`

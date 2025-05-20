@@ -19,7 +19,7 @@ export default function MainNavbar() {
       }
 
       try {
-        const res = await axios('https://team-messenger.onrender.com/api/users/me', {
+        const res = await axios('https://team-messenger-server.onrender.com/api/users/me', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
